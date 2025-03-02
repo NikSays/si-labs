@@ -7,7 +7,7 @@
 static FILE *red_led_stream;
 static FILE *green_led_stream;
 static FILE *lcd_stream;
-static FILE *keypad_stream;
+static FILE *numpad_stream;
 
 static int red_led_putchar(char ch, FILE *) {
     return led_putchar(RED_LED_PIN, ch);
@@ -25,7 +25,7 @@ void lab_1_2_setup() {
     red_led_stream = fdevopen(red_led_putchar, NULL);
     green_led_stream = fdevopen(green_led_putchar, NULL);
     lcd_stream = fdevopen(lcd_putchar, NULL);
-    keypad_stream = fdevopen(NULL, numpad_getchar);
+    numpad_stream = fdevopen(NULL, numpad_getchar_wait);
 }
 
 void lab_1_2_loop() {
@@ -35,7 +35,7 @@ void lab_1_2_loop() {
     char pass[5] = {0};
 
     for (int i = 0; i < 4; i++){
-        pass[i] = fgetc(keypad_stream);
+        pass[i] = fgetc(numpad_stream);
         fprintf(lcd_stream, "%c", pass[i]);
     }
 
@@ -48,7 +48,7 @@ void lab_1_2_loop() {
         fputc('1', red_led_stream);
     }
 
-    fgetc(keypad_stream);
+    fgetc(numpad_stream);
         
     fputc('0', green_led_stream);
     fputc('0', red_led_stream);
