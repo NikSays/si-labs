@@ -1,6 +1,4 @@
 #include <Arduino.h>
-#include <stdio.h>
-
 
 void led_setup(int led);
 

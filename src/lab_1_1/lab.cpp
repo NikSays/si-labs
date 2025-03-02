@@ -1,14 +1,14 @@
-#include "lab_1_1.h"
+#include "lab.h"
 #define LED_PIN LED_BUILTIN
 
-FILE *serial_stream;
-FILE *led_stream;
+static FILE *serial_stream;
+static FILE *led_stream;
 
-int builtin_led_putchar(char ch, FILE *) {
+static int builtin_led_putchar(char ch, FILE *) {
     return led_putchar(LED_PIN, ch);
 }
 
-void lab_setup() {
+void lab_1_1_setup() {
     serial_setup();
     led_setup(LED_PIN);
 
@@ -17,7 +17,7 @@ void lab_setup() {
     led_stream = fdevopen(builtin_led_putchar, NULL);
 };
 
-void lab_loop() {
+void lab_1_1_loop() {
     char c = 0;
     char str[64] = {0};
     int i = 0;

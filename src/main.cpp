@@ -1,9 +1,7 @@
-#include "lab_1_1/lab_1_1.h"
+#define LAB_1_1
 
-void setup() {
-    lab_setup();
-}
-
-void loop() {
-    lab_loop();
-}
+#ifdef LAB_1_1
+#include "lab_1_1/lab.h"
+void setup() {lab_1_1_setup();}
+void loop() {lab_1_1_loop();}
+#endif
