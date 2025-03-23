@@ -1,4 +1,4 @@
-#define LAB_2_2
+#define LAB_3_1
 
 #ifdef LAB_1_1
 #include "lab_1_1/lab.h"
@@ -21,5 +21,11 @@ void loop() {lab_2_1_loop();}
 #ifdef LAB_2_2
 #include "lab_2_2/lab.h"
 void setup() {lab_2_2_setup();}
+void loop() {}
+#endif
+
+#ifdef LAB_3_1
+#include "lab_3_1/lab.h"
+void setup() {lab_3_1_setup();}
 void loop() {}
 #endif

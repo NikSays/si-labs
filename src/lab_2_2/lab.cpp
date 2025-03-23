@@ -30,15 +30,11 @@ void lab_2_2_setup() {
     led_2_stream = fdevopen(led_2_putchar, NULL);
     serial_stream = fdevopen(serial_putchar, NULL);
     button_stream = fdevopen(NULL, blink_button_getchar);
-
   
     // Initialize
     semaphore = xSemaphoreCreateBinary();
     queue = xQueueCreate(10, sizeof(int)); 
     blinks = 0;
-
-    pinMode(BUTTON_PIN, INPUT);
-    pinMode(LED1_PIN, OUTPUT);
 
     // Run tasks
     xTaskCreate(lab_2_2_task_1, "Button LED Task", 1024, NULL, 1, NULL);
